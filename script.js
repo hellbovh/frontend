@@ -34,3 +34,33 @@ async function sendData() {
         console.error('Error:', error);
     }
 }
+
+async function loadData() {
+    const output = document.getElementById('output');
+    const statusMessage = document.getElementById('statusMessage');
+
+    try {
+        const response = await fetch('http://localhost:5000/read');
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            if (result.data.length === 0) {
+                output.innerHTML = '<em>Нет данных</em>';
+            } else {
+                output.innerHTML = '<strong>Данные из файла:</strong><br>' + 
+                    result.data.join('<br>');
+            }
+            statusMessage.textContent = 'Данные успешно загружены!';
+            statusMessage.style.color = 'green';
+        } else {
+            output.innerHTML = '';
+            statusMessage.textContent = 'Ошибка: ' + result.message;
+            statusMessage.style.color = 'red';
+        }
+    } catch (error) {
+        output.innerHTML = '';
+        statusMessage.textContent = 'Ошибка соединения с сервером';
+        statusMessage.style.color = 'red';
+        console.error('Error:', error);
+    }
+}

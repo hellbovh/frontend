@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend v1.0</title>
+    <title>Frontend v2.0</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Версия 1.0</h1>
+        <h1>Версия 2.0</h1>
+        
         <div class="input-section">
+            <h3>Отправить данные</h3>
             <input type="text" id="dataInput" placeholder="Введите текст...">
             <button onclick="sendData()">Отправить</button>
         </div>
+
+        <div class="input-section">
+            <h3>Получить данные</h3>
+            <button onclick="loadData()">Загрузить данные</button>
+            <div id="output" class="output-area"></div>
+        </div>
+
         <div id="statusMessage"></div>
     </div>
 
