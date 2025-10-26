@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://backend:5000'
+const BACKEND_URL = 'http://backend:5000';
 
 async function sendData() {
     const input = document.getElementById('dataInput');
@@ -12,7 +12,7 @@ async function sendData() {
     }
 
     try {
-        const response = await fetch('${BACKEND_URL}/save', {
+        const response = await fetch(BACKEND_URL + '/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ async function sendData() {
         if (result.status === 'success') {
             statusMessage.textContent = 'Данные успешно отправлены!';
             statusMessage.style.color = 'green';
-            input.value = '';
+            input.value = ''; // Очищаем поле ввода
         } else {
             statusMessage.textContent = 'Ошибка: ' + result.message;
             statusMessage.style.color = 'red';
@@ -42,7 +42,7 @@ async function loadData() {
     const statusMessage = document.getElementById('statusMessage');
 
     try {
-        const response = await fetch('${BACKEND_URL}/read');
+        const response = await fetch(BACKEND_URL + '/read');
         const result = await response.json();
 
         if (result.status === 'success') {
