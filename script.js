@@ -1,3 +1,5 @@
+const BACKEND_URL = 'http://backend:5000'
+
 async function sendData() {
     const input = document.getElementById('dataInput');
     const statusMessage = document.getElementById('statusMessage');
@@ -10,7 +12,7 @@ async function sendData() {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/save', {
+        const response = await fetch('${BACKEND_URL}/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +42,7 @@ async function loadData() {
     const statusMessage = document.getElementById('statusMessage');
 
     try {
-        const response = await fetch('http://localhost:5000/read');
+        const response = await fetch('${BACKEND_URL}/read');
         const result = await response.json();
 
         if (result.status === 'success') {
