@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://backend:5000';
+const BACKEND_URL = 'http://localhost:5000';
 
 async function sendData() {
     const input = document.getElementById('dataInput');
